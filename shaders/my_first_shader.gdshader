@@ -18,11 +18,25 @@ void vertex() {
 	}
 	// Makes it go in circles, think of the trignometric circle, sin between
 	// -1 and 1 in the y axis and cos between -1 and 1 in the x axis
-	VERTEX += vec2(cos(TIME)*100.0,sin(TIME)*100.0);
+	//VERTEX += vec2(cos(TIME)*100.0,sin(TIME)*100.0);
 }
 
 void fragment() {
 	// Called for every pixel the material is visible on.
+
+	vec4 color1 = vec4(1.0,0.0,0.0,1.0);
+	vec4 color2= vec4(0.0,1.0,0.0,1.0);
+	// mix takes 3 values, the first color, the second color, and how much we want
+	// to mix them together, if mix percentage is 0, it uses color 1 fully, max value
+	// is 1, if 1 will use the color 2 exclusively
+
+	// sin and cosin give values between -1 and 1, so we add 1 and divide by 2
+	// to get values between 0 and 1
+	float mix_percentage = (sin(TIME) + 1.0) / 2.0;
+	vec4 output_color = mix(color1,color2,mix_percentage);
+
+	COLOR = output_color;
+
 }
 
 //void light() {
