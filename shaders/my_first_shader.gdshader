@@ -7,8 +7,18 @@ void vertex() {
 	// Acessing the top left corner vertice, remember there are 4 vertices, its
 	// a rectangle drawn by two triangles
 	if (VERTEX.x < 0.0 && VERTEX.y < 0.0){
-		VERTEX += vec2(64.0, 0.0);
+		//VERTEX += vec2(64.0, 0.0);
 	}
+
+	if (VERTEX.x < 0.0 && VERTEX.y < 0.0 || VERTEX.x > 0.0 && VERTEX.y > 0.0){
+		float speed = 10.0;
+		// *10.0 is basically the radius, we can incresae or decrease to make a larger
+		// or smaller circle
+		//VERTEX += vec2(cos(TIME*speed)*10.0,sin(TIME*speed)*10.0);
+	}
+	// Makes it go in circles, think of the trignometric circle, sin between
+	// -1 and 1 in the y axis and cos between -1 and 1 in the x axis
+	VERTEX += vec2(cos(TIME)*100.0,sin(TIME)*100.0);
 }
 
 void fragment() {
