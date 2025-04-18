@@ -35,8 +35,20 @@ void fragment() {
 	float mix_percentage = (sin(TIME) + 1.0) / 2.0;
 	vec4 output_color = mix(color1,color2,mix_percentage);
 
-	COLOR = output_color;
+	//COLOR = output_color;
 
+	// UV coordinates is a vec 2, represent the coordinates on the texture we
+	// will get the color from
+	// texture() gets the color from a texture based on the position of a pixel
+
+	//COLOR = texture(TEXTURE, UV);
+
+	// Red value goes from 0 to 1 in the x axis, Green value goes from 0 to 1 in
+	// the y axis, it represents the UV coordinates going from ranges 0 to 1
+	// notice on the bottom right the values x and y are both 1, so it's yellow
+	//COLOR = vec4(UV.x,UV.y,0.0,1.0);
+
+	COLOR = texture(TEXTURE, UV) * output_color;
 }
 
 //void light() {
