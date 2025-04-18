@@ -2,6 +2,18 @@ shader_type canvas_item;
 // canvas_item tells godot it is for 2D, spatial is for 3D
 // ivec vector for int , bvec vector for bool
 
+group_uniforms FirstGroup;
+// uniform can be used anywhere in the shader, but we cant redifine it's value
+// useful to get information into the shader from outside
+uniform float my_float: hint_range(0.0, 10.0) = 7.0;
+//thrid parameter of hint is how much the value increasees in the slider
+group_uniforms FirstGroup.SubGroup;
+uniform int my_int: hint_range(0, 200,5) = 10;
+
+group_uniforms SecondGroup;
+uniform bool my_bool;
+uniform vec4 my_color: source_color;
+
 void vertex() {
 	// Called for every vertex the material is visible on.
 	// Acessing the top left corner vertice, remember there are 4 vertices, its
@@ -11,10 +23,10 @@ void vertex() {
 	}
 
 	if (VERTEX.x < 0.0 && VERTEX.y < 0.0 || VERTEX.x > 0.0 && VERTEX.y > 0.0){
-		float speed = 10.0;
+		float speed = my_float;
 		// *10.0 is basically the radius, we can incresae or decrease to make a larger
 		// or smaller circle
-		//VERTEX += vec2(cos(TIME*speed)*10.0,sin(TIME*speed)*10.0);
+		VERTEX += vec2(cos(TIME*speed)*10.0,sin(TIME*speed)*10.0);
 	}
 	// Makes it go in circles, think of the trignometric circle, sin between
 	// -1 and 1 in the y axis and cos between -1 and 1 in the x axis
@@ -48,7 +60,9 @@ void fragment() {
 	// notice on the bottom right the values x and y are both 1, so it's yellow
 	//COLOR = vec4(UV.x,UV.y,0.0,1.0);
 
-	COLOR = texture(TEXTURE, UV) * output_color;
+	//COLOR = texture(TEXTURE, UV) * output_color;
+
+	COLOR = texture(TEXTURE, UV) * my_color;
 }
 
 //void light() {

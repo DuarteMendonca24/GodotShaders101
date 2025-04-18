@@ -5,6 +5,10 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w0j50"]
 shader = ExtResource("1_cefco")
+shader_parameter/my_float = 10.0
+shader_parameter/my_int = 0
+shader_parameter/my_bool = false
+shader_parameter/my_color = Color(0.196078, 0.776471, 0.545098, 1)
 
 [node name="Shaders101" type="Node2D"]
 
