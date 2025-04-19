@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://lplym6lqri55"]
 
-[ext_resource type="Script" path="res://scripts/shaders_101.gd" id="1_84ht2"]
-[ext_resource type="Shader" path="res://shaders/my_first_shader.gdshader" id="1_cefco"]
+[ext_resource type="Script" path="res://shaders101/scripts/shaders_101.gd" id="1_84ht2"]
+[ext_resource type="Shader" path="res://shaders101/shaders/my_first_shader.gdshader" id="1_cefco"]
 [ext_resource type="Texture2D" uid="uid://dv6wprejnbdp1" path="res://icon.svg" id="1_kfyrc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w0j50"]
